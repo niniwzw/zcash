@@ -2,12 +2,14 @@ FROM ubuntu:16.04
 MAINTAINER King Wang <james@example.com>
 ENV REFRESHED_AT 2016-08-16
 
+COPY . /opt
 RUN apt-get -yqq update
 RUN apt-get -yqq install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool ncurses-dev unzip git python \
       zlib1g-dev wget bsdmainutils automake
 #RUN git clone https://github.com/zcash/zcash.git .
+RUN cd /opt
 RUN ls -lh
 RUN git checkout v1.0.0
 RUN ./zcutil/fetch-params.sh

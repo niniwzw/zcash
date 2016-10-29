@@ -7,8 +7,10 @@ RUN apt-get -yqq update
 RUN apt-get -yqq install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool ncurses-dev unzip git python \
-      zlib1g-dev wget bsdmainutils automake libboost-dev
+      zlib1g-dev wget bsdmainutils automake
 #RUN git clone https://github.com/zcash/zcash.git .
+
+RUN apt-get -yqq install libboost-all-dev
 
 COPY . /opt
 ENV DATA_ROOT ~/.zcash

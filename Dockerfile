@@ -26,4 +26,7 @@ RUN echo 'gen=1' >> ~/.zcash/zcash.conf
 RUN echo "genproclimit=$(nproc)" >> ~/.zcash/zcash.conf
 RUN echo 'equihashsolver=tromp' >> ~/.zcash/zcash.conf
 
+EXPOSE 8232
+EXPOSE 8233
+
 CMD ["./src/zcashd"]

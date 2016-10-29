@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 MAINTAINER King Wang <james@example.com>
 ENV REFRESHED_AT 2016-08-16
 
@@ -10,7 +10,7 @@ RUN apt-get -yqq install \
       zlib1g-dev wget bsdmainutils automake
 #RUN git clone https://github.com/zcash/zcash.git .
 
-RUN apt-get -yqq install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+#RUN apt-get -yqq install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
 
 COPY . /opt
 ENV DATA_ROOT ~/.zcash

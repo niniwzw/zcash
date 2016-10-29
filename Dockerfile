@@ -3,7 +3,7 @@ MAINTAINER King Wang <james@example.com>
 ENV REFRESHED_AT 2016-08-16
 
 RUN apt-get -yqq update
-RUN apt-get install \
+RUN apt-get -yqq install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
       autoconf libtool ncurses-dev unzip git python \
       zlib1g-dev wget bsdmainutils automake

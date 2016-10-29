@@ -15,9 +15,8 @@ RUN apt-get -yqq install \
 COPY . /opt
 ENV DATA_ROOT ~/.zcash
 WORKDIR /opt
-RUN ls -lh
-RUN ./zcutil/fetch-params.sh
 RUN ./zcutil/build.sh -j$(nproc)
+RUN ./zcutil/fetch-params.sh
 RUN mkdir -p $DATA_ROOT
 VOLUME $DATA_ROOT
 

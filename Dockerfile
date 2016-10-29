@@ -9,7 +9,7 @@ RUN apt-get -yqq install \
       autoconf libtool ncurses-dev unzip git python \
       zlib1g-dev wget bsdmainutils automake
 #RUN git clone https://github.com/zcash/zcash.git .
-RUN cd /opt
+WORKDIR /opt
 RUN ls -lh
 RUN git checkout v1.0.0
 RUN ./zcutil/fetch-params.sh

@@ -11,7 +11,6 @@ RUN apt-get -yqq install \
 #RUN git clone https://github.com/zcash/zcash.git .
 WORKDIR /opt
 RUN ls -lh
-RUN git checkout v1.0.0
 RUN ./zcutil/fetch-params.sh
 RUN ./zcutil/build.sh -j$(nproc)
 

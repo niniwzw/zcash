@@ -13,7 +13,8 @@ RUN apt-get -yqq install \
 #RUN apt-get -yqq install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
 
 COPY . /opt
-ENV DATA_ROOT ~/.zcash
+ENV DATA_ROOT /root/.zcash
+RUN mkdir -p $DATA_ROOT
 WORKDIR /opt
 RUN echo "addnode=mainnet.z.cash" > ~/.zcash/zcash.conf
 RUN echo "rpcuser=username" >> ~/.zcash/zcash.conf
@@ -24,7 +25,7 @@ RUN echo 'equihashsolver=tromp' >> ~/.zcash/zcash.conf
 
 RUN ./zcutil/build.sh -j$(nproc)
 RUN ./zcutil/fetch-params.sh
-RUN mkdir -p $DATA_ROOT
+
 VOLUME $DATA_ROOT
 
 

@@ -15,17 +15,19 @@ RUN apt-get -yqq install \
 COPY . /opt
 ENV DATA_ROOT ~/.zcash
 WORKDIR /opt
-RUN ./zcutil/build.sh -j$(nproc)
-RUN ./zcutil/fetch-params.sh
-RUN mkdir -p $DATA_ROOT
-VOLUME $DATA_ROOT
-
 RUN echo "addnode=mainnet.z.cash" > ~/.zcash/zcash.conf
 RUN echo "rpcuser=username" >> ~/.zcash/zcash.conf
 RUN echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >> ~/.zcash/zcash.conf
 RUN echo 'gen=1' >> ~/.zcash/zcash.conf
 RUN echo "genproclimit=$(nproc)" >> ~/.zcash/zcash.conf
 RUN echo 'equihashsolver=tromp' >> ~/.zcash/zcash.conf
+
+RUN ./zcutil/build.sh -j$(nproc)
+RUN ./zcutil/fetch-params.sh
+RUN mkdir -p $DATA_ROOT
+VOLUME $DATA_ROOT
+
+
 
 EXPOSE 8232
 EXPOSE 8233
